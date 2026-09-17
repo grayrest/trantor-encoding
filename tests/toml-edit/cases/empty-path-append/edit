@@ -1,0 +1,4 @@
+op = "append"
+path = []
+value = 2
+error = "NotFound([])"

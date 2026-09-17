@@ -1,0 +1,4 @@
+op = "set_with"
+path = ["server"]
+table = "Dotted"
+value = { port = 80, host = "h" }

@@ -1,0 +1,4 @@
+target = {
+  name = "app", # the app
+  kind = "roc"
+}

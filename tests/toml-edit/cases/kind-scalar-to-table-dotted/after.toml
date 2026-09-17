@@ -1,0 +1,7 @@
+name = "app"
+# where it listens
+server.port = 80 # for now
+server.host = "h"
+
+[other]
+k = 1

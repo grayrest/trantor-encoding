@@ -1,0 +1,6 @@
+title = "t"
+fruit.apple.color = "red"
+fruit.apple.size = 3
+owner = "me"
+
+[other]

@@ -1,0 +1,6 @@
+name = "app"
+
+# The version.
+# Bumped by CI.
+version = "0.1.0" # current
+edition = "2026"

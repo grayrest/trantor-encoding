@@ -1,0 +1,4 @@
+op = "set_with"
+path = ["package", "metadata"]
+table = "Dotted"
+value = { docs = true, links = { home = "h" } }

@@ -1,0 +1,2 @@
+site.name = "docs"
+site.pages = [{ path = "/" }, { path = "/about" }]

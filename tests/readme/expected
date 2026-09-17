@@ -1,0 +1,59 @@
+## Base64 and Hex
+"aGVsbG8="
+"-_8"
+Ok([104, 101, 108, 108, 111])
+Err(InvalidBase64(6))
+"cafe"
+Ok([202, 254])
+Err(OddLength)
+## Rows and tables
+[["name", "age"], ["ada", "36"], ["hopper, grace", "45"]]
+"name,age\nada,36\n\"hopper, grace\",45"
+"name\tage\nada\t36\nhopper, grace\t45"
+Ok(["ada", "grace"])
+Ok("45")
+## Typed records
+ada 36 ada@example.com; grace 45 with no email
+Ok("age,email,name\n36,ada@example.com,ada\n45,,grace")
+Ok("name,age,email\nada,36,ada@example.com\ngrace,45,")
+Err(MissingColumn("email"))
+Mismatch at [Index(1), Key("age")]
+## Cell forms
+Ok([9007199254740992])
+## Dates in cells
+Ok("at,name,on\n2026-03-08T09:30:00-05:00,launch,2026-03-08")
+Err(Mismatch({ expected: "a local time", path: [Index(0), Key("at")] }))
+## Excel
+ada 36 ada@example.com; grace 45 with no email
+## Reading
+True
+Err(DuplicateKey({ column: 1, line: 2, path: [Key("a")] }))
+line 2, column 1: the key a is already defined
+Err(OutOfRange({ column: 5, line: 1, text: "23:59:60" }))
+## Typed values
+Ok("name = \"demo\"\nreleased = 2026-03-08\ntags = [\"a\", \"b\"]\n\n[limits]\nrequests = 100\n\n[server]\nhost = \"localhost\"\nport = 8080\n")
+Mismatch at [Key("server"), Key("port")]
+MissingRequiredField("port")
+Mismatch at [Key("x")]
+## Writing
+Ok("name = \"demo\"\nratio = 1.5\n\n[server]\nport = 8080\n")
+Ok("at = 07:30:00\nbell = \"\\u0007\"\n")
+Ok("at = 07:30\nbell = \"\\x07\"\n")
+## Floats and Dec
+Ok({ price: 12345678.123456789012345678 })
+Ok({ price: 12345678.12345679 })
+Ok("price = 12345678.123456789012345678\n")
+Ok({ x: 0.999999999999999999, y: 0.0 })
+Ok({ x: inf })
+Ok(0.1)
+Err(NotADec)
+## Editing
+True
+"# what this world builds on\n[deps]\ntrantor-cli = { path = \"../trantor-cli\" }  # the baseline\ntrantor-encoding = { path = \"../trantor-encoding\" }\n"
+"# what this world builds on\n[deps]\ntrantor-cli = { path = \"../trantor-cli\" }  # the baseline\n\n[deps.trantor-encoding]\npath = \"../trantor-encoding\"\n"
+"# what this world builds on\n[deps]\ntrantor-encoding = { path = \"../trantor-encoding\" }\n"
+True
+Err(NotFound([Key("deps"), Key("nope")]))
+"tags = [\"a\", \"b\", \"c\"]  # sorted\n"
+Err(NotFound([Key("fruit")]))
+True

@@ -1,0 +1,5 @@
+op = "set_with"
+path = ["p", "x", "k"]
+table = "Dotted"
+value = { a = 1 }
+error = 'StyleNotPossible({ path: [Key("p"), Key("x"), Key("k")], style: Dotted })'

@@ -1,0 +1,11 @@
+name = "app"
+
+# server settings
+[server]
+port = 8080 # the port
+
+[server.tls]
+cert = "c.pem"
+
+[other]
+k = 1

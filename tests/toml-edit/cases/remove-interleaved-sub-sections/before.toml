@@ -1,0 +1,7 @@
+[server]
+host = "x"
+[logging]
+[server.tls]
+cert = "a"
+[metrics]
+[server.limits]

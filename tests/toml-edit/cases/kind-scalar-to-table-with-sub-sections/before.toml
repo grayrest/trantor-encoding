@@ -1,0 +1,6 @@
+name = "app"
+# where it listens
+server = "off" # for now
+
+[other]
+k = 1

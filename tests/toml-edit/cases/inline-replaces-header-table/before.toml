@@ -1,0 +1,9 @@
+[q]
+k = 1
+
+# the x table
+[p.x]
+a = 1
+
+[p.x.y]
+b = 2

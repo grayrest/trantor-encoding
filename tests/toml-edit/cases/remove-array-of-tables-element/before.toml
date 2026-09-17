@@ -1,0 +1,12 @@
+[[bin]]
+name = "a"
+
+# the second
+[[bin]]
+name = "b"
+
+[bin.sub]
+k = 1
+
+[[bin]]
+name = "c"

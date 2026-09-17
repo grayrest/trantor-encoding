@@ -1,0 +1,4 @@
+op = "set_with"
+path = ["t", "x"]
+value = {}
+table = "Inline"

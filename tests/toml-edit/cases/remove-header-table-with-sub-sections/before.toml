@@ -1,0 +1,12 @@
+[a]
+k = 1
+
+# the server
+[server]
+port = 1
+
+[server.tls]
+cert = "c"
+
+[b]
+k = 2

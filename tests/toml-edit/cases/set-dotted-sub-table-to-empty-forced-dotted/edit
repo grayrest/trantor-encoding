@@ -1,0 +1,4 @@
+op = "set_with"
+path = ["a", "b"]
+value = {}
+table = "Dotted"

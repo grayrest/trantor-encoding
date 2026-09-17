@@ -1,0 +1,4 @@
+# The TOML conformance corpus and edit snapshots are compared byte for byte;
+# CRLF files must stay CRLF whatever core.autocrlf says.
+tests/toml-conformance/corpus/** -text
+tests/toml-edit/cases/** -text

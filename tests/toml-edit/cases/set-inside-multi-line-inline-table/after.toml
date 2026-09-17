@@ -1,0 +1,5 @@
+target = {
+  name = "app", # the app
+  kind = "roc",
+  deps = { a = { path = "../a" } }
+}

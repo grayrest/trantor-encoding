@@ -1,0 +1,3 @@
+op = "set"
+path = ["deps", "trantor-cli"]
+value = { path = "../trantor-cli" }

@@ -1,0 +1,3 @@
+op = "set"
+path = ["bin"]
+value = [{ name = "a" }, { name = "b", path = "src/b.roc" }]

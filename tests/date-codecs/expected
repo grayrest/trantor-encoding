@@ -1,0 +1,4 @@
+decoded 2 records, written back: d,l,o,t | 2026-03-08,2026-03-08T12:00:00,-0044-03-15T12:00:00.5-00:30,07:32:05.25 | 10000-01-01,0000-01-01T00:00:00,2026-03-08T12:00:00Z,23:59:59.123456789
+encoded: d,l,o,t | 10000-01-01,2026-03-08T12:00:00,-0044-03-15T12:00:00+14:00,07:32:05.25; decoded back equal: True
+a local cell into an offset field: Mismatch at [Index(1), Key("o")]
+an offset of +15:00: InvalidOffset at [Index(0), Key("o")]

@@ -1,0 +1,6 @@
+# settings
+[server]
+port = 1
+motd = """
+hello
+world"""

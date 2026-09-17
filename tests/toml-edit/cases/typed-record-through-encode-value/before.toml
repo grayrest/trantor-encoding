@@ -1,0 +1,2 @@
+[deps]
+trantor-cli = { path = "../trantor-cli" }

@@ -1,0 +1,4 @@
+# colours
+color.fg = "red" # fore
+color.bg = "blue"
+size = 3

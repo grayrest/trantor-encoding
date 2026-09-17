@@ -1,0 +1,3 @@
+op = "set"
+path = ["x", 0]
+value = { a = {} }

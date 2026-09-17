@@ -1,0 +1,4 @@
+op = "set_with"
+path = ["color"]
+table = "Dotted"
+value = "none"

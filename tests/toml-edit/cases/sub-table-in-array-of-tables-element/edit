@@ -1,0 +1,3 @@
+op = "set"
+path = ["bin", 0, "sub"]
+value = { k = 1 }

@@ -1,0 +1,3 @@
+op = "set"
+path = ["workspace", "metadata"]
+value = { owner = "me" }

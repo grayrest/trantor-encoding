@@ -1,0 +1,5 @@
+[deps]
+foo = { path = "../foo" }
+
+[deps.bar]
+path = "../bar"

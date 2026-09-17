@@ -1,0 +1,4 @@
+op = "set_with"
+path = ["deps", "bar"]
+table = "Header"
+value = { path = "../bar" }

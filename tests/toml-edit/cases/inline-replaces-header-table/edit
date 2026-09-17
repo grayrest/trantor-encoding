@@ -1,0 +1,4 @@
+op = "set_with"
+path = ["p", "x"]
+table = "Inline"
+value = { a = 1, y = { b = 3 } }

@@ -1,0 +1,3 @@
+op = "set"
+path = ["bin", 1, "name"]
+value = "c"

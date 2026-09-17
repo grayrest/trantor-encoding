@@ -1,0 +1,8 @@
+[package]
+name = "app"
+
+[package.metadata]
+docs = true
+
+[other]
+k = 1

@@ -1,0 +1,4 @@
+apple.type = "fruit"
+orange.type = "fruit"
+apple.skin = "thin"
+orange.skin = "thick"

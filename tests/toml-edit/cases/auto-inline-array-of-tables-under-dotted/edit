@@ -1,0 +1,3 @@
+op = "set"
+path = ["site", "pages"]
+value = [{ path = "/" }, { path = "/about" }]

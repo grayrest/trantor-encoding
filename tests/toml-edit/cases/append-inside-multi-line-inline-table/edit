@@ -1,0 +1,3 @@
+op = "append"
+path = ["target", "deps"]
+value = { name = "b", optional = true }

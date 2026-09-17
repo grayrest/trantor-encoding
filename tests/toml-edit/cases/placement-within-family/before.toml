@@ -1,0 +1,9 @@
+[components.a]
+kind = "roc"
+
+[components.b]
+kind = "rust"
+
+# how they connect
+[wiring]
+a = "b"

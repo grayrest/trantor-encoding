@@ -1,0 +1,7 @@
+# the app
+name = "app" # its name
+extra = 1
+
+# settings
+[server]
+port = 2

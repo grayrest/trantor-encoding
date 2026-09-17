@@ -1,0 +1,12 @@
+[server.tls]
+cert = "a"
+
+[logging]
+level = 1
+
+[server.limits]
+max = 1
+
+[metrics]
+
+[server.log]

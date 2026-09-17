@@ -1,0 +1,5 @@
+[[bin]]
+name = "a"
+
+[[bin]]
+name = "c" # second

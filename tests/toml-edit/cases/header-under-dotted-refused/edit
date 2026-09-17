@@ -1,0 +1,5 @@
+op = "set_with"
+path = ["a", "b", "d"]
+table = "Header"
+value = { e = 1 }
+error = 'StyleNotPossible({ path: [Key("a"), Key("b"), Key("d")], style: Header })'

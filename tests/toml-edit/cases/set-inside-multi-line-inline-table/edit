@@ -1,0 +1,4 @@
+op = "set_with"
+path = ["target", "deps"]
+version = "V1_0"
+value = { a = { path = "../a" } }

@@ -1,0 +1,6 @@
+target = {
+  name = "app",
+  deps = [
+    { name = "a" },
+  ],
+}

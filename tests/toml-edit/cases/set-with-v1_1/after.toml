@@ -1,0 +1,3 @@
+[log]
+level = "info"
+rotate = { at = 03:00, prefix = "\e[1m" }

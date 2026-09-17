@@ -1,0 +1,4 @@
+op = "set_with"
+path = ["deps", "trantor-cli"]
+table = "Inline"
+value = { path = "../trantor-cli" }

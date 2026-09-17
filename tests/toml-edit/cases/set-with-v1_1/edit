@@ -1,0 +1,5 @@
+op = "set_with"
+path = ["log", "rotate"]
+version = "V1_1"
+table = "Inline"
+value = { at = 03:00:00, prefix = "\u001B[1m" }

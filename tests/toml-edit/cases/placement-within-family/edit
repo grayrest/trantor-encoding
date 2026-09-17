@@ -1,0 +1,3 @@
+op = "set"
+path = ["components", "c"]
+value = { kind = "roc" }

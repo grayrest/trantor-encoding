@@ -1,0 +1,8 @@
+[dependencies]
+serde = { version = "1" }
+
+[dependencies.toml]
+version = "0.8"
+
+[dependencies.regex]
+version = "1.10"

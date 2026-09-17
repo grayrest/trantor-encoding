@@ -1,0 +1,1 @@
+dep = { path = "../x", optional = true, features = ["a"] }

@@ -1,0 +1,10 @@
+name = "app"
+
+[other]
+k = 1
+
+[server]
+port = 80
+
+[server.tls]
+cert = "c.pem"

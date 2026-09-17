@@ -1,0 +1,4 @@
+op = "append"
+path = ["bin"]
+value = "b"
+error = 'NotATable([Key("bin")])'

@@ -1,0 +1,4 @@
+[tool]
+lint.level = "warn"
+lint.rules.unused = true
+lint.rules.shadow = false

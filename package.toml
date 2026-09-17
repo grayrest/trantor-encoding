@@ -1,0 +1,100 @@
+# trantor-encoding — Base64, hex, CSV and TOML, in pure Roc.
+#
+# An ADD-ON package: it provides no driver. Pair it with a baseline:
+#
+#   [deps]
+#   trantor-cli      = { path = "../trantor-cli" }
+#   trantor-encoding = { path = "../trantor-encoding" }
+#
+# Design: notes/2026-09-16-s3-encoding-design-log.md in the trantor repo.
+# Components are added as each format lands (plans/2026-09-16-s3-trantor-encoding.md).
+[package]
+name = "trantor-encoding"
+version = "0.1.0"
+exports = ["Base64", "Hex", "Csv", "Toml"]
+
+# No interfaces and no host: everything is Roc. `Base64Lookup` is the byte
+# lookup table and scan both codecs share; exported by the component so they
+# can import it, and kept out of the package's exports.
+[components.base64]
+kind = "roc"
+exports = ["Base64", "Hex", "Base64Lookup"]
+
+# What the formats share below their grammars: paths and entry points, number
+# conversion and spelling, the calendar, and text positions and byte order.
+# Exported by the component for `csv` and `toml` to import; never by the
+# package.
+[components.common]
+kind = "roc"
+exports = ["EncodingDate", "EncodingNumber", "EncodingText", "EncodingPath"]
+
+# CSV and its dialects. `Csv` is the surface; `CsvParse` (scanner), `CsvEmit`
+# (writer), `CsvCell` (XML Schema cell forms) and `CsvDate` (XML Schema date
+# forms) are what it is built from, and the `CsvTest*`/`CsvStress` modules hold
+# the component's expects. Exported by the component only.
+[components.csv]
+kind = "roc"
+exports = ["Csv", "CsvParse", "CsvEmit", "CsvCell", "CsvDate", "CsvTestRows", "CsvTestTable", "CsvTestDecode", "CsvTestEncode", "CsvTestDate", "CsvStress"]
+
+# TOML 1.1.0. `Toml` is the surface; `TomlParse` (documents), `TomlSyntax`
+# (their text as syntax), `TomlTree` (table assembly), `TomlLex`, `TomlString`,
+# `TomlNumber` and `TomlDate` (tokens), `TomlValue` (the value types) and
+# `TomlProblem` (scan errors) read; `TomlDocument` keeps a document's text,
+# `TomlIndex` finds everything in it by path, and `TomlSet`, `TomlRemove` and
+# `TomlAppend` edit it (`TomlPlan` decides how new values are written,
+# `TomlAdd` and `TomlPlace` write and place them, `TomlLines`, `TomlNodes` and
+# `TomlLayout` change lines and values, `TomlLocate` holds lookups and edit
+# errors); `TomlFormat` and `TomlCursor`
+# decode typed values, `TomlEncode` encodes them, `TomlCheck` finds what cannot
+# be written and `TomlWrite` and `TomlText` write. The `TomlTest*`/`TomlStress`
+# modules hold the component's expects. Exported by the component only.
+[components.toml]
+kind = "roc"
+exports = [
+	"Toml",
+	"TomlParse",
+	"TomlSyntax",
+	"TomlTree",
+	"TomlIndex",
+	"TomlDocument",
+	"TomlLocate",
+	"TomlLines",
+	"TomlLayout",
+	"TomlNodes",
+	"TomlPlace",
+	"TomlRemove",
+	"TomlPlan",
+	"TomlAdd",
+	"TomlAppend",
+	"TomlSet",
+	"TomlLex",
+	"TomlString",
+	"TomlNumber",
+	"TomlDate",
+	"TomlValue",
+	"TomlProblem",
+	"TomlFormat",
+	"TomlCursor",
+	"TomlEncode",
+	"TomlCheck",
+	"TomlWrite",
+	"TomlText",
+	"TomlTestParse",
+	"TomlTestErrors",
+	"TomlTestValue",
+	"TomlTestDecode",
+	"TomlTestCodecs",
+	"TomlTestEncode",
+	"TomlTestEncodeErr",
+	"TomlTestRoundTrip",
+	"TomlTestDocument",
+	"TomlTestIndex",
+	"TomlTestRemove",
+	"TomlTestSet",
+	"TomlStress",
+]
+
+# What `trantor test .` composes this add-on against. Never a dependency of
+# the apps that use it.
+[dev-deps]
+trantor-cli = { path = "../trantor-cli" }

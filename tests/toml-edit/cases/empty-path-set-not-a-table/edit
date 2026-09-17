@@ -1,0 +1,4 @@
+op = "set"
+path = []
+value = 1
+error = "Encode(RootNotATable)"

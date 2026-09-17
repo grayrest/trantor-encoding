@@ -1,0 +1,2 @@
+[tool]
+lint.level = "warn"

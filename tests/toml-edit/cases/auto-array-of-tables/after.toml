@@ -1,0 +1,8 @@
+name = "app"
+
+[[bin]]
+name = "a"
+
+[[bin]]
+name = "b"
+path = "src/b.roc"

@@ -1,0 +1,4 @@
+[package]
+name = "app"
+metadata.docs = true
+metadata.links.home = "h"

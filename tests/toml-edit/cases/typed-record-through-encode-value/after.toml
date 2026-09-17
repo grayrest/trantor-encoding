@@ -1,0 +1,3 @@
+[deps]
+trantor-cli = { path = "../trantor-cli" }
+trantor-hash = { features = ["fast"], optional = true, path = "../trantor-hash" }

@@ -1,0 +1,7 @@
+[workspace]
+
+[workspace.metadata]
+owner = "me"
+
+[other]
+k = 1

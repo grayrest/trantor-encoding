@@ -1,0 +1,4 @@
+[logging]
+level = 1
+
+[metrics]

@@ -1,0 +1,5 @@
+[package]
+name = "app"
+
+[other]
+k = 1

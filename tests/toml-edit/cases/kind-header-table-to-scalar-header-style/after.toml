@@ -1,0 +1,5 @@
+name = "app"
+server = "off"
+
+[other]
+k = 1

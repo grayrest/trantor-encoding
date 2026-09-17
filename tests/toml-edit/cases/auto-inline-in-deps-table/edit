@@ -1,0 +1,3 @@
+op = "set"
+path = ["deps", "trantor-hash"]
+value = { path = "../trantor-hash" }
