@@ -66,7 +66,7 @@ TomlValue :: [].{
 
 		## Any `Value` in a typed field, read whole. Only a format with
 		## `parse_toml_value` (TOML's) has one to give.
-		parser_for : fmt -> (state -> Try({ value : Value, rest : state }, [Mismatch({ path : List(EncodingPath.Segment), expected : Str }), ..]))
+		parser_for : fmt -> (state -> Try({ value : Value, rest : state }, [Mismatch({ path : List(EncodingPath.Segment), expected : Str })]))
 			where [fmt.parse_toml_value : fmt, state -> Try({ value : Value, rest : state }, [Mismatch({ path : List(EncodingPath.Segment), expected : Str })])]
 		parser_for = |format| |state| format.parse_toml_value(state).map_err(|Mismatch(problem)| Mismatch(problem))
 

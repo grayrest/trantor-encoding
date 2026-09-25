@@ -25,7 +25,7 @@ TomlCursor :: [].{
 	expected_array = "an array"
 
 	## Walking the table under the cursor.
-	open_table : DecodeState -> Try([Counted({ len : U64, rest : DecodeState }), Uncounted(DecodeState)], [Mismatch({ path : List(EncodingPath.Segment), expected : Str }), ..])
+	open_table : DecodeState -> Try([Counted({ len : U64, rest : DecodeState }), Uncounted(DecodeState)], [Mismatch({ path : List(EncodingPath.Segment), expected : Str })])
 	open_table = |state|
 		match state.current {
 			Table(entries) => Ok(Uncounted(push(state, { entries, items: [], next: 0 })))

@@ -168,7 +168,7 @@ Toml :: [].{
 	## A local date, decoded and encoded through any format with the date
 	## methods (TOML's and CSV's).
 	LocalDate := { year : I32, month : U8, day : U8 }.{
-		parser_for : format -> (state -> Try({ value : LocalDate, rest : state }, [Mismatch({ path : List(Segment), expected : Str }), ..]))
+		parser_for : format -> (state -> Try({ value : LocalDate, rest : state }, [Mismatch({ path : List(Segment), expected : Str })]))
 			where [format.parse_local_date : format, state -> Try({ value : Date, rest : state }, [Mismatch({ path : List([Key(Str), Index(U64)]), expected : Str })])]
 		parser_for = |format| |state| {
 			parsed = format.parse_local_date(state) ? |Mismatch(problem)| Mismatch(problem)
@@ -185,7 +185,7 @@ Toml :: [].{
 
 	## A local time, through any format with the date methods.
 	LocalTime := { hour : U8, minute : U8, second : U8, millisecond : U16, microsecond : U16, nanosecond : U16 }.{
-		parser_for : format -> (state -> Try({ value : LocalTime, rest : state }, [Mismatch({ path : List(Segment), expected : Str }), ..]))
+		parser_for : format -> (state -> Try({ value : LocalTime, rest : state }, [Mismatch({ path : List(Segment), expected : Str })]))
 			where [format.parse_local_time : format, state -> Try({ value : Time, rest : state }, [Mismatch({ path : List([Key(Str), Index(U64)]), expected : Str })])]
 		parser_for = |format| |state| {
 			parsed = format.parse_local_time(state) ? |Mismatch(problem)| Mismatch(problem)
@@ -202,7 +202,7 @@ Toml :: [].{
 
 	## A local date and time, through any format with the date methods.
 	LocalDatetime := { date : Date, time : Time }.{
-		parser_for : format -> (state -> Try({ value : LocalDatetime, rest : state }, [Mismatch({ path : List(Segment), expected : Str }), ..]))
+		parser_for : format -> (state -> Try({ value : LocalDatetime, rest : state }, [Mismatch({ path : List(Segment), expected : Str })]))
 			where [format.parse_local_datetime : format, state -> Try({ value : { date : Date, time : Time }, rest : state }, [Mismatch({ path : List([Key(Str), Index(U64)]), expected : Str })])]
 		parser_for = |format| |state| {
 			parsed = format.parse_local_datetime(state) ? |Mismatch(problem)| Mismatch(problem)
@@ -220,7 +220,7 @@ Toml :: [].{
 	## A date and time at an offset from UTC, through any format with the date
 	## methods.
 	OffsetDatetime := { date : Date, time : Time, offset : Offset }.{
-		parser_for : format -> (state -> Try({ value : OffsetDatetime, rest : state }, [Mismatch({ path : List(Segment), expected : Str }), ..]))
+		parser_for : format -> (state -> Try({ value : OffsetDatetime, rest : state }, [Mismatch({ path : List(Segment), expected : Str })]))
 			where [format.parse_offset_datetime : format, state -> Try({ value : { date : Date, time : Time, offset : Offset }, rest : state }, [Mismatch({ path : List([Key(Str), Index(U64)]), expected : Str })])]
 		parser_for = |format| |state| {
 			parsed = format.parse_offset_datetime(state) ? |Mismatch(problem)| Mismatch(problem)

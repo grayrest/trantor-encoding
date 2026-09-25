@@ -174,54 +174,54 @@ Csv :: [].{
 		rename_field : Format, Str -> Str
 		rename_field = |_, name| name
 
-		parse_str : Format, DecodeState -> Try({ value : Str, rest : DecodeState }, [Mismatch({ path : List(Segment), expected : Str }), ..])
+		parse_str : Format, DecodeState -> Try({ value : Str, rest : DecodeState }, [Mismatch({ path : List(Segment), expected : Str })])
 		parse_str = |_, state| Ok({ value: cell_text(state), rest: next_cell(state) })
 
-		parse_bool : Format, DecodeState -> Try({ value : Bool, rest : DecodeState }, [Mismatch({ path : List(Segment), expected : Str }), ..])
+		parse_bool : Format, DecodeState -> Try({ value : Bool, rest : DecodeState }, [Mismatch({ path : List(Segment), expected : Str })])
 		parse_bool = |_, state| read_cell(state, CsvCell.boolean, EncodingPath.expected_bool)
 
-		parse_u8 : Format, DecodeState -> Try({ value : U8, rest : DecodeState }, [Mismatch({ path : List(Segment), expected : Str }), ..])
+		parse_u8 : Format, DecodeState -> Try({ value : U8, rest : DecodeState }, [Mismatch({ path : List(Segment), expected : Str })])
 		parse_u8 = |_, state| read_cell(state, |text| CsvCell.unsigned(text, U128.to_u8_try), EncodingPath.expected_u8)
 
-		parse_i8 : Format, DecodeState -> Try({ value : I8, rest : DecodeState }, [Mismatch({ path : List(Segment), expected : Str }), ..])
+		parse_i8 : Format, DecodeState -> Try({ value : I8, rest : DecodeState }, [Mismatch({ path : List(Segment), expected : Str })])
 		parse_i8 = |_, state| read_cell(state, |text| CsvCell.signed(text, I128.to_i8_try), EncodingPath.expected_i8)
 
-		parse_u16 : Format, DecodeState -> Try({ value : U16, rest : DecodeState }, [Mismatch({ path : List(Segment), expected : Str }), ..])
+		parse_u16 : Format, DecodeState -> Try({ value : U16, rest : DecodeState }, [Mismatch({ path : List(Segment), expected : Str })])
 		parse_u16 = |_, state| read_cell(state, |text| CsvCell.unsigned(text, U128.to_u16_try), EncodingPath.expected_u16)
 
-		parse_i16 : Format, DecodeState -> Try({ value : I16, rest : DecodeState }, [Mismatch({ path : List(Segment), expected : Str }), ..])
+		parse_i16 : Format, DecodeState -> Try({ value : I16, rest : DecodeState }, [Mismatch({ path : List(Segment), expected : Str })])
 		parse_i16 = |_, state| read_cell(state, |text| CsvCell.signed(text, I128.to_i16_try), EncodingPath.expected_i16)
 
-		parse_u32 : Format, DecodeState -> Try({ value : U32, rest : DecodeState }, [Mismatch({ path : List(Segment), expected : Str }), ..])
+		parse_u32 : Format, DecodeState -> Try({ value : U32, rest : DecodeState }, [Mismatch({ path : List(Segment), expected : Str })])
 		parse_u32 = |_, state| read_cell(state, |text| CsvCell.unsigned(text, U128.to_u32_try), EncodingPath.expected_u32)
 
-		parse_i32 : Format, DecodeState -> Try({ value : I32, rest : DecodeState }, [Mismatch({ path : List(Segment), expected : Str }), ..])
+		parse_i32 : Format, DecodeState -> Try({ value : I32, rest : DecodeState }, [Mismatch({ path : List(Segment), expected : Str })])
 		parse_i32 = |_, state| read_cell(state, |text| CsvCell.signed(text, I128.to_i32_try), EncodingPath.expected_i32)
 
-		parse_u64 : Format, DecodeState -> Try({ value : U64, rest : DecodeState }, [Mismatch({ path : List(Segment), expected : Str }), ..])
+		parse_u64 : Format, DecodeState -> Try({ value : U64, rest : DecodeState }, [Mismatch({ path : List(Segment), expected : Str })])
 		parse_u64 = |_, state| read_cell(state, |text| CsvCell.unsigned(text, U128.to_u64_try), EncodingPath.expected_u64)
 
-		parse_i64 : Format, DecodeState -> Try({ value : I64, rest : DecodeState }, [Mismatch({ path : List(Segment), expected : Str }), ..])
+		parse_i64 : Format, DecodeState -> Try({ value : I64, rest : DecodeState }, [Mismatch({ path : List(Segment), expected : Str })])
 		parse_i64 = |_, state| read_cell(state, |text| CsvCell.signed(text, I128.to_i64_try), EncodingPath.expected_i64)
 
-		parse_u128 : Format, DecodeState -> Try({ value : U128, rest : DecodeState }, [Mismatch({ path : List(Segment), expected : Str }), ..])
+		parse_u128 : Format, DecodeState -> Try({ value : U128, rest : DecodeState }, [Mismatch({ path : List(Segment), expected : Str })])
 		parse_u128 = |_, state| read_cell(state, |text| CsvCell.unsigned(text, |size| Ok(size)), EncodingPath.expected_u128)
 
-		parse_i128 : Format, DecodeState -> Try({ value : I128, rest : DecodeState }, [Mismatch({ path : List(Segment), expected : Str }), ..])
+		parse_i128 : Format, DecodeState -> Try({ value : I128, rest : DecodeState }, [Mismatch({ path : List(Segment), expected : Str })])
 		parse_i128 = |_, state| read_cell(state, |text| CsvCell.signed(text, |value| Ok(value)), EncodingPath.expected_i128)
 
-		parse_f32 : Format, DecodeState -> Try({ value : F32, rest : DecodeState }, [Mismatch({ path : List(Segment), expected : Str }), ..])
+		parse_f32 : Format, DecodeState -> Try({ value : F32, rest : DecodeState }, [Mismatch({ path : List(Segment), expected : Str })])
 		parse_f32 = |_, state| read_cell(state, CsvCell.f32, EncodingPath.expected_f32)
 
-		parse_f64 : Format, DecodeState -> Try({ value : F64, rest : DecodeState }, [Mismatch({ path : List(Segment), expected : Str }), ..])
+		parse_f64 : Format, DecodeState -> Try({ value : F64, rest : DecodeState }, [Mismatch({ path : List(Segment), expected : Str })])
 		parse_f64 = |_, state| read_cell(state, CsvCell.f64, EncodingPath.expected_f64)
 
-		parse_dec : Format, DecodeState -> Try({ value : Dec, rest : DecodeState }, [Mismatch({ path : List(Segment), expected : Str }), ..])
+		parse_dec : Format, DecodeState -> Try({ value : Dec, rest : DecodeState }, [Mismatch({ path : List(Segment), expected : Str })])
 		parse_dec = |_, state| read_cell(state, CsvCell.dec, EncodingPath.expected_dec)
 
 		## A record is one CSV record; a record nested in a field has no cells
 		## of its own to read.
-		parse_record_start : Format, DecodeState -> Try([Counted({ len : U64, rest : DecodeState }), Uncounted(DecodeState)], [Mismatch({ path : List(Segment), expected : Str }), ..])
+		parse_record_start : Format, DecodeState -> Try([Counted({ len : U64, rest : DecodeState }), Uncounted(DecodeState)], [Mismatch({ path : List(Segment), expected : Str })])
 		parse_record_start = |_, state|
 			if state.is_in_record {
 				Err(EncodingPath.mismatch_at(state, expected_cell))
@@ -241,7 +241,7 @@ Csv :: [].{
 				Continue(DecodeState),
 				Done(DecodeState),
 			],
-			[Mismatch({ path : List(Segment), expected : Str }), ..],
+			[Mismatch({ path : List(Segment), expected : Str })],
 		)
 		parse_record_field = |_, _, state|
 			match state.headers.get(state.column) {
@@ -254,22 +254,22 @@ Csv :: [].{
 					}
 			}
 
-		parse_record_after_field : Format, DecodeState -> Try([Continue(DecodeState), Done(DecodeState)], [Mismatch({ path : List(Segment), expected : Str }), ..])
+		parse_record_after_field : Format, DecodeState -> Try([Continue(DecodeState), Done(DecodeState)], [Mismatch({ path : List(Segment), expected : Str })])
 		parse_record_after_field = |_, state| Ok(Continue(state))
 
-		skip_record_field : Format, DecodeState -> Try(DecodeState, [Mismatch({ path : List(Segment), expected : Str }), ..])
+		skip_record_field : Format, DecodeState -> Try(DecodeState, [Mismatch({ path : List(Segment), expected : Str })])
 		skip_record_field = |_, state| Ok(next_cell(state))
 
-		parse_local_date : Format, DecodeState -> Try({ value : EncodingDate.Date, rest : DecodeState }, [Mismatch({ path : List(Segment), expected : Str }), ..])
+		parse_local_date : Format, DecodeState -> Try({ value : EncodingDate.Date, rest : DecodeState }, [Mismatch({ path : List(Segment), expected : Str })])
 		parse_local_date = |_, state| read_cell(state, CsvDate.local_date, EncodingPath.expected_local_date)
 
-		parse_local_time : Format, DecodeState -> Try({ value : EncodingDate.Time, rest : DecodeState }, [Mismatch({ path : List(Segment), expected : Str }), ..])
+		parse_local_time : Format, DecodeState -> Try({ value : EncodingDate.Time, rest : DecodeState }, [Mismatch({ path : List(Segment), expected : Str })])
 		parse_local_time = |_, state| read_cell(state, CsvDate.local_time, EncodingPath.expected_local_time)
 
-		parse_local_datetime : Format, DecodeState -> Try({ value : CsvDate.LocalDatetime, rest : DecodeState }, [Mismatch({ path : List(Segment), expected : Str }), ..])
+		parse_local_datetime : Format, DecodeState -> Try({ value : CsvDate.LocalDatetime, rest : DecodeState }, [Mismatch({ path : List(Segment), expected : Str })])
 		parse_local_datetime = |_, state| read_cell(state, CsvDate.local_datetime, EncodingPath.expected_local_datetime)
 
-		parse_offset_datetime : Format, DecodeState -> Try({ value : CsvDate.OffsetDatetime, rest : DecodeState }, [Mismatch({ path : List(Segment), expected : Str }), ..])
+		parse_offset_datetime : Format, DecodeState -> Try({ value : CsvDate.OffsetDatetime, rest : DecodeState }, [Mismatch({ path : List(Segment), expected : Str })])
 		parse_offset_datetime = |_, state| read_cell(state, CsvDate.offset_datetime, EncodingPath.expected_offset_datetime)
 
 		encode_str : Str, EncodeState -> Try(EncodeState, err)
@@ -461,7 +461,7 @@ cell_text = |state| state.cells.get(state.column) ?? ""
 next_cell : Csv.DecodeState -> Csv.DecodeState
 next_cell = |state| { ..state, column: state.column + 1 }
 
-read_cell : Csv.DecodeState, (Str -> Try(v, [Invalid])), Str -> Try({ value : v, rest : Csv.DecodeState }, [Mismatch({ path : List(Csv.Segment), expected : Str }), ..])
+read_cell : Csv.DecodeState, (Str -> Try(v, [Invalid])), Str -> Try({ value : v, rest : Csv.DecodeState }, [Mismatch({ path : List(Csv.Segment), expected : Str })])
 read_cell = |state, read, expected|
 	match read(cell_text(state)) {
 		Ok(value) => Ok({ value, rest: next_cell(state) })
@@ -545,7 +545,7 @@ cell_under = |header, record|
 		Err(_) => ""
 	}
 
-check_columns : List(Str), List(Str) -> Try({}, [DuplicateColumn(Str), UnknownColumn(Str), MissingColumn(Str), ..])
+check_columns : List(Str), List(Str) -> Try({}, [DuplicateColumn(Str), UnknownColumn(Str), MissingColumn(Str)])
 check_columns = |columns, names| {
 	repeated = CsvParse.first_repeat(columns).map_ok(|index| columns.get(index) ?? "")
 	unknown = columns.find_first(|column| !names.contains(column))

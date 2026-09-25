@@ -32,7 +32,7 @@ EncodingText :: [].{
 			})
 
 	## A syntax error at `position`, `expected` naming what would fix it.
-	syntax : Position, Str -> [Syntax({ line : U64, column : U64, expected : Str }), ..]
+	syntax : Position, Str -> [Syntax({ line : U64, column : U64, expected : Str })]
 	syntax = |position, expected| Syntax({ line: position.line, column: position.column, expected })
 
 	## The `line L, column C: ` prefix of a positioned error's message.

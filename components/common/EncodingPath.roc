@@ -11,11 +11,11 @@ EncodingPath :: [].{
 	Segment : [Key(Str), Index(U64)]
 
 	## A value at `path` that is not what the type needs.
-	mismatch : List(Segment), Str -> [Mismatch({ path : List(Segment), expected : Str }), ..]
+	mismatch : List(Segment), Str -> [Mismatch({ path : List(Segment), expected : Str })]
 	mismatch = |path, expected| Mismatch({ path, expected })
 
 	## `mismatch` at the path a format state reports.
-	mismatch_at : state, Str -> [Mismatch({ path : List(Segment), expected : Str }), ..]
+	mismatch_at : state, Str -> [Mismatch({ path : List(Segment), expected : Str })]
 		where [state.key_path : state -> List(Segment)]
 	mismatch_at = |state, expected| Mismatch({ path: state.key_path(), expected })
 
@@ -114,17 +114,17 @@ ProbeFormat := [Default].{
 	rename_field : ProbeFormat, Str -> Str
 	rename_field = |_, name| name
 
-	parse_str : ProbeFormat, ProbeState -> Try({ value : Str, rest : ProbeState }, [Mismatch({ path : List(EncodingPath.Segment), expected : Str }), ..])
+	parse_str : ProbeFormat, ProbeState -> Try({ value : Str, rest : ProbeState }, [Mismatch({ path : List(EncodingPath.Segment), expected : Str })])
 	parse_str = |_, state| Ok({ value: cell(state), rest: next_cell(state) })
 
-	parse_u8 : ProbeFormat, ProbeState -> Try({ value : U8, rest : ProbeState }, [Mismatch({ path : List(EncodingPath.Segment), expected : Str }), ..])
+	parse_u8 : ProbeFormat, ProbeState -> Try({ value : U8, rest : ProbeState }, [Mismatch({ path : List(EncodingPath.Segment), expected : Str })])
 	parse_u8 = |_, state|
 		match U8.from_str(cell(state)) {
 			Ok(value) => Ok({ value, rest: next_cell(state) })
 			Err(_) => Err(EncodingPath.mismatch_at(state, EncodingPath.expected_u8))
 		}
 
-	parse_record_start : ProbeFormat, ProbeState -> Try([Counted({ len : U64, rest : ProbeState }), Uncounted(ProbeState)], [Mismatch({ path : List(EncodingPath.Segment), expected : Str }), ..])
+	parse_record_start : ProbeFormat, ProbeState -> Try([Counted({ len : U64, rest : ProbeState }), Uncounted(ProbeState)], [Mismatch({ path : List(EncodingPath.Segment), expected : Str })])
 	parse_record_start = |_, state| Ok(Uncounted(state))
 
 	parse_record_field : ProbeFormat,
@@ -137,7 +137,7 @@ ProbeFormat := [Default].{
 			Continue(ProbeState),
 			Done(ProbeState),
 		],
-		[Mismatch({ path : List(EncodingPath.Segment), expected : Str }), ..],
+		[Mismatch({ path : List(EncodingPath.Segment), expected : Str })],
 	)
 	parse_record_field = |_, _, state|
 		match state.names.get(state.at) {
@@ -145,10 +145,10 @@ ProbeFormat := [Default].{
 			Err(_) => Ok(Done(state))
 		}
 
-	parse_record_after_field : ProbeFormat, ProbeState -> Try([Continue(ProbeState), Done(ProbeState)], [Mismatch({ path : List(EncodingPath.Segment), expected : Str }), ..])
+	parse_record_after_field : ProbeFormat, ProbeState -> Try([Continue(ProbeState), Done(ProbeState)], [Mismatch({ path : List(EncodingPath.Segment), expected : Str })])
 	parse_record_after_field = |_, state| Ok(Continue(state))
 
-	skip_record_field : ProbeFormat, ProbeState -> Try(ProbeState, [Mismatch({ path : List(EncodingPath.Segment), expected : Str }), ..])
+	skip_record_field : ProbeFormat, ProbeState -> Try(ProbeState, [Mismatch({ path : List(EncodingPath.Segment), expected : Str })])
 	skip_record_field = |_, state| Ok(next_cell(state))
 }
 
@@ -163,7 +163,7 @@ ProbeEncoder := [Default].{
 	encode_str : Str, ProbeOut -> Try(ProbeOut, err)
 	encode_str = |value, out| Ok({ ..out, text: "${out.text}${value};" })
 
-	encode_u8 : U8, ProbeOut -> Try(ProbeOut, [Zero(List(EncodingPath.Segment)), ..])
+	encode_u8 : U8, ProbeOut -> Try(ProbeOut, [Zero(List(EncodingPath.Segment))])
 	encode_u8 = |value, out|
 		if value == 0 {
 			Err(Zero(out.path))
